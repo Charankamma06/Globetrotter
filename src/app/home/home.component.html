@@ -1,0 +1,33 @@
+<div class="container">
+    <h2>Adventure Awaits</h2>
+    <div class="form-group">
+      <input type="text" [(ngModel)]="searchTerm" class="form-control" placeholder="Search for a destination...">
+    </div>
+    <div class="row">
+  
+      <div class="col-md-4" *ngFor="let destination of filteredDestinations">
+        <div class="card mb-4 shadow-sm">
+          <img src="{{ destination.imageUrl }}" class="card-img-top" alt="{{ destination.name }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ destination.name }}</h5>
+            <p class="card-text">{{ destination.description }}</p>
+            <p class="card-text"><strong>Rating: {{ destination.rating }}/5</strong></p>
+  
+            <p class="card-text"><strong>Cost: {{ destination.cost| currency:'INR' }}</strong></p>
+  
+            <span class="badge badge-info">{{ destination.category }}</span>
+  
+  
+  
+  
+            <div class="text-center my-3">
+              <button class="btn btn-primary" (click)="bookTicket(destination)">
+                Book Package
+              </button>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

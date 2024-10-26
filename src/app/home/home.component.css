@@ -1,0 +1,18 @@
+.card {
+    margin-bottom: 20px;
+  }
+
+  .card-img-top {
+    height: 200px;
+    object-fit: cover;
+  }
+
+  .badge {
+    font-size: 0.9rem;
+  }
+
+  :host {
+    background-color: lightcyan;
+    display: block;
+
+  }
