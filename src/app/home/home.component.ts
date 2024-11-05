@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {  OnInit } from '@angular/core';
+import { FormsModule,FormBuilder, FormGroup, Validators  } from '@angular/forms';
 import { CommonModule } from '@angular/common';  
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { DestinationService } from '../destination.service';
 
 
 
@@ -14,7 +16,9 @@ import { faStar } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./home.component.css']
 })
 
-export class HomeComponent {
+export class HomeComponent  {
+  faStar = faStar;
+
 
   searchTerm: string = '';
 
@@ -23,7 +27,7 @@ export class HomeComponent {
       name: 'Paris',
       imageUrl: 'assets/Paris.jpg',
       description: 'The City of Light,It is  known for its cultural landmarks.' ,
-      rating:4.75,
+      rating:5,
       category: 'Cultural' , 
       cost:200000
     },
@@ -31,7 +35,7 @@ export class HomeComponent {
       name: 'Swiss Alps',
       imageUrl: 'assets/Swiss Alps.jpg',
       description: 'A paradise for adventure lovers, offering hiking and skiing.', 
-      rating:4.5,
+      rating:4,
       category: 'Adventure' , 
       cost:100000
     },
@@ -47,7 +51,7 @@ export class HomeComponent {
       name: 'Disney World',
       imageUrl: 'assets/Disney World.jpg',
       description: 'The most fascinating and the best Disneyland in the world is in Florida, USA.',
-      rating:4.5,
+      rating:4,
       category: 'Family Travel' , 
       cost:200000
     },
@@ -55,7 +59,7 @@ export class HomeComponent {
       name: 'Bali',
       imageUrl: 'assets/Bali.jpg',
       description: 'Tourists love Bali for its pristine beaches, scuba diving, Balinese cuisine',
-      rating:4,
+      rating:3,
       category: 'Nature' , 
       cost:100000
     },
@@ -76,18 +80,18 @@ export class HomeComponent {
       cost:300000
     },
     {
-      name: 'İstanbul',
-      imageUrl: 'assets/İstanbul',
-      description: 'Istanbul is a major city in Turkey that straddles Europe and Asia across the Bosphorus Strait.',
-      rating:3.75,
-      category: 'Cultural' , 
-      cost:100000
+      name: 'Galápagos Islands',
+      imageUrl: 'assets/island.jpg',
+      description: 'The Galápagos Islands is a volcanic archipelago in the Pacific Ocean.' ,
+      rating:3,
+      category: 'Nature' , 
+      cost:300000
     },
     {
       name: 'Bora Bora',
       imageUrl: 'assets/Bora Bora.jpg',
       description: 'Bora Bora is a South Pacific island northwest of Tahiti in French Surrounded by sand-fringed motus.',
-      rating:3.5,
+      rating:4,
       category: 'Nature' , 
       cost:100000
     },
@@ -103,7 +107,7 @@ export class HomeComponent {
       name: 'Machu Picchu',
       imageUrl: 'assets/Machu Picchu.jpg',
       description: 'Trek the Salkantay Route to Machu Picchu. The younger, cooler sister of the over-crowded Inca Trail.',
-      rating:4,
+      rating:3,
       category: 'Adventure' , 
       cost:200000
     },
@@ -111,7 +115,7 @@ export class HomeComponent {
       name: 'Thailand',
       imageUrl: 'assets/Thailand.jpg',
       description: 'Thailand on your personal map if you are looking for one of the best adventure trips in the world. ',
-      rating:4.5,
+      rating:4,
       category: 'Adventure' , 
       cost:200000
     },
@@ -133,7 +137,9 @@ export class HomeComponent {
     alert(`Booking tickets for ${destination.name}`);
 
   }
-
+  stars(rating: number) {
+    return Array(5).fill(0).map((x, i) => i + 1);
+  }
 
 
 

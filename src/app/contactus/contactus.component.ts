@@ -1,11 +1,36 @@
-import { Component } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+ 
 @Component({
   selector: 'app-contactus',
-  standalone:true,
+  standalone: true,
+  imports: [ReactiveFormsModule,CommonModule],
   templateUrl: './contactus.component.html',
-  styleUrls: ['./contactus.component.css']
+  styleUrls: ['./contactus.component.css'],
 })
-export class ContactUsComponent {
-
+export class ContactUsComponent implements OnInit {
+  contactForm!: FormGroup;
+ 
+  constructor(private formBuilder: FormBuilder) {}
+ 
+  ngOnInit() {
+   
+    this.contactForm = this.formBuilder.group({
+      name: ['', Validators.required], 
+      email: ['', [Validators.required, Validators.email]], 
+      message: ['', [Validators.required, Validators.minLength(10)]], 
+    });
+  }
+ 
+  onSubmit() {
+    if (this.contactForm.valid) {
+      console.log('Form Data:', this.contactForm.value);
+      alert('Message Sent Successfully!');
+      this.contactForm.reset();
+    } else {
+      alert('Please fill out all fields correctly.');
+    }
+  }
 }
+ 

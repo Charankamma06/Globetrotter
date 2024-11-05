@@ -16,3 +16,16 @@
     display: block;
 
   }
+  .rating fa-icon {
+  color: lightgray;
+  margin-right: 3px;
+}
+
+.rating fa-icon.filled {
+  color: gold;
+}
+.container{
+  color: #007bff;
+}
+
+  
